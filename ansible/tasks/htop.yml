@@ -1,0 +1,5 @@
+- hosts: srv-ocs
+  
+  tasks:
+    - yum: name=http://rhnsat.internal.timbrasil.com.br/pub/htop-1.0.1-2.el6.x86_64.rpm state=present
+      when: ansible_os_family == "RedHat" and ansible_distribution_release == "Santiago"

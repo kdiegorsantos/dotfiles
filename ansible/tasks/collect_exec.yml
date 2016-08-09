@@ -1,0 +1,10 @@
+- hosts: srv-lnx
+  
+  tasks:
+    - file: name= {{ item }} state=absent
+      when: ansible_os_family == "RedHat" 
+      with_items:
+        - /appl/scripts/collect/collect_exec.sh
+    
+    - copy: src=/appl/scripts/collect/collect_exec.sh dest=/var/tmp/collect_exec.sh mode=0775 owner=root
+      when: ansible_os_family == "RedHat"

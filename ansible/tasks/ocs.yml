@@ -1,0 +1,24 @@
+- hosts: srv-ocs
+  
+  tasks:
+#    - lineinfile: dest=/etc/sysconfig/network-scripts/ifcfg-eth0 line="MTU=9000" state=present
+
+    - service: name=tuned state=started enabled=no
+
+    - shell: args="tuned-adm off"
+      when: ansible_os_family == "RedHat"
+
+    - service: name={{ item }} state=stopped enabled=no
+      with_items:
+        - auditd
+        - rhsmcertd
+        - tuned
+        - ktune
+        - rngd
+        - certmonger
+        - cpuspeed
+        - OVCtrl
+        - vasd 
+        - networker
+
+#    - copy: src=./sysctl.conf dest=/etc/

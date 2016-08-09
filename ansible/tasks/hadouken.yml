@@ -1,0 +1,11 @@
+- hosts: srv-lnx
+  
+  tasks:
+    - file: name= {{ item }} state=absent
+      when: ansible_os_family == "RedHat" 
+      with_items:
+        - /usr/local/sbin/hadouken.py
+        - /usr/local/sbin/hadouken
+    
+    - copy: src=/appl/hadouken/sbin/hadouken.py dest=/usr/local/sbin/hadouken.py mode=0775 owner=root
+      when: ansible_os_family == "RedHat" and ansible_distribution_release == "Santiago"
