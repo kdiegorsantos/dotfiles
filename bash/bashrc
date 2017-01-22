@@ -21,3 +21,6 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
+
+# myconfig gpg default key
+export GPGKEY=D338DD3DA8DD0739
