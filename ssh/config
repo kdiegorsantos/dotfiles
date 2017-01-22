@@ -1,19 +1,24 @@
 # ~/.ssh/config
+
 Host *
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-        LogLevel ERROR
-        ConnectTimeout 10
+	StrictHostKeyChecking no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ConnectTimeout 10
 
 Host sneadm001
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-        LogLevel ERROR
-        ConnectTimeout 10
+	StrictHostKeyChecking no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ConnectTimeout 10
 
 Host *.internal.timbrasil.com.br
-        ProxyCommand ssh -W %h:%p sneadm001
-        StrictHostKeyChecking no
-        UserKnownHostsFile=/dev/null
-        LogLevel ERROR
-        ConnectTimeout 10
+	ProxyCommand ssh -W %h:%p sneadm001
+	StrictHostKeyChecking no
+	UserKnownHostsFile=/dev/null
+	LogLevel ERROR
+	ConnectTimeout 10
+
+Host github.com
+	Hostname ssh.github.com
+   	Port 443
