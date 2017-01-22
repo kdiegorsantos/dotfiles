@@ -1,0 +1,7 @@
+# ~/.gitconfig
+
+[user]
+	name = Diego R. Santos
+	email = kdiegorsantos@gmail.com
+[core]
+	editor = vim
