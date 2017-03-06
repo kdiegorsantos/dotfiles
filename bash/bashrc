@@ -8,7 +8,7 @@ function start_agent {
      echo succeeded
      chmod 600 "${SSH_ENV}"
      . "${SSH_ENV}" > /dev/null
-     ls ~/.ssh/id_[d,r]* | egrep -v 'pub$' | while read -r line ; do ssh-add $line ; done
+     ls -R $(find ~/.ssh) | egrep 'rsa$|.pem$' | egrep '/' | awk '{print $NF}' | while read -r line ; do chmod -N $line && ssh-add $line ; done
 }
 
 # source SSH settings, if applicable
@@ -21,6 +21,3 @@ if [ -f "${SSH_ENV}" ]; then
 else
      start_agent;
 fi
-
-# myconfig gpg default key
-export GPGKEY=D338DD3DA8DD0739
